@@ -1,0 +1,144 @@
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body{
+  background-color: beige;
+}
+
+.tdscc{
+  margin-top: 150px;
+}
+
+.logo{
+  width: 120px;
+}
+
+.contain {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.pricing-header {
+  max-width: 700px;
+}
+
+.card-deck .card {
+  min-width: 220px;
+}
+
+.border-top { border-top: 1px solid #e5e5e5; }
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+.custom-scrollbar-js,
+.custom-scrollbar-css {
+  height: 500px;
+}
+
+
+/* Custom Scrollbar using CSS */
+.custom-scrollbar-css {
+  overflow-y: scroll;
+}
+
+/* scrollbar width */
+.custom-scrollbar-css::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* scrollbar track */
+.custom-scrollbar-css::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+/* scrollbar handle */
+.custom-scrollbar-css::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background-color: #00d2ff;
+  background-image: linear-gradient(to top, red 0%, red 100%);
+}
+
+.wrimagecard{
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    position: relative;
+    background: #fff;
+    box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+.wrimagecard .fa{
+	position: relative;
+    font-size: 70px;
+}
+.wrimagecard-topimage_header{
+padding: 20px;
+}
+a.wrimagecard:hover, .wrimagecard-topimage:hover {
+    box-shadow: 2px 4px 8px 0px rgba(46,61,73,0.2);
+}
+.wrimagecard-topimage a {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.wrimagecard-topimage_title {
+    padding: 15px 24px;
+    height: 60px;
+    padding-bottom: 0.75rem;
+    position: relative;
+}
+.wrimagecard-topimage a {
+    border-bottom: none;
+    text-decoration: none;
+    color: #525c65;
+    transition: color 0.3s ease;
+}
+
+#tabs{
+	background: #000;
+    color: red;
+}
+#tabs h6.section-title{
+    color: red;
+}
+
+a{
+  color: #000;
+  text-decoration: none;
+}
+
+#tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: red;
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+    border-bottom: 4px solid !important;
+    font-size: 20px;
+    font-weight: bold;
+}
+#tabs .nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: red;
+    font-size: 20px;
+}
