@@ -3,10 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\{Kategori, Konten};
 
 class Dashboardcontroller extends Controller
 {
     public function index(){
-        return view('user.dashboard');
+        $kategori = Kategori::all();
+        $konten = Konten::all();
+        $data = [
+            'kategori' => $kategori,
+            'konten' => $konten
+        ];
+        return view('user.dashboard', $data);
+    }
+
+    public function getbyid($id){
+        $konten = Konten::where('contents_id', $id)->first();
+        $data = [
+            'konten' => $konten
+        ];
+        return view('user.dashboarddetail', $data);
     }
 }

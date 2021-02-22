@@ -26,4 +26,5 @@ class Newscontroller extends Controller
         ];
         return view('user.news', $data);
     }
+
 }
