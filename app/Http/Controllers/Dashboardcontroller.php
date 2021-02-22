@@ -9,7 +9,7 @@ class Dashboardcontroller extends Controller
 {
     public function index(){
         $kategori = Kategori::all();
-        $konten = Konten::all();
+        $konten = Konten::orderBy('name', 'ASC')->get();
         $data = [
             'kategori' => $kategori,
             'konten' => $konten
