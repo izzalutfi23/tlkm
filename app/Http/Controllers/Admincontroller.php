@@ -25,7 +25,7 @@ class Admincontroller extends Controller
             'file' => $image->hashName()
         ]);
 
-        return redirect('dashboard');
+        return redirect('adm');
     }
 
     public function update(Request $request){
@@ -37,19 +37,19 @@ class Admincontroller extends Controller
                 'text' => $request->text,
                 'file' => $image->hashName()
             ]);
-            return redirect('dashboard');
+            return redirect('adm');
         }
         else{
             News::where('news_id', $request->id)->update([
                 'name' => $request->name,
                 'text' => $request->text
             ]);
-            return redirect('dashboard');
+            return redirect('adm');
         }
     }
 
     public function destroy($id){
         News::where('news_id',$id)->delete();
-        return redirect('dashboard');
+        return redirect('adm');
     }
 }

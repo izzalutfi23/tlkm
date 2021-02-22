@@ -23,7 +23,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{url('dashboard')}}" method="POST" enctype="multipart/form-data">
+                                <form action="{{url('adm')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
                                         <label>Name</label>
@@ -71,13 +71,13 @@
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$data->name}}</td>
-                                        <td>{{substr($data->text, 0, 60)}}...</td>
+                                        <td>{!!substr($data->text, 0, 60)!!}...</td>
                                         <td><img src="{{Storage::url('public/news/'.$data->file)}}" class="img-fluid">
                                         </td>
                                         <td width="11%">
                                             <button class="btn btn-primary btn-sm" data-toggle="modal"
                                                 data-target="#edit{{$data->news_id}}">Edit</button>
-                                            <a onclick="return confirm('Data akan dihapus!')" href="{{url('dashboard/'.$data->news_id)}}"><button
+                                            <a onclick="return confirm('Data akan dihapus!')" href="{{url('adm/'.$data->news_id)}}"><button
                                                     class="btn btn-danger btn-sm">Hapus</button></a>
                                         </td>
                                     </tr>
@@ -87,14 +87,14 @@
                                         <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Kategori</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit News</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{url('dashboard/')}}" method="POST"
+                                                    <form action="{{url('adm/')}}" method="POST"
                                                         enctype="multipart/form-data">
                                                         @csrf
 														@method('patch')
@@ -106,7 +106,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Description</label>
-                                                            <textarea name="text" class="form-control"
+                                                            <textarea name="text" id="mytextarea" class="form-control"
                                                                 rows="3">{{$data->text}}</textarea>
                                                         </div>
                                                         <div class="form-group">

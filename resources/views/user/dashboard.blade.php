@@ -29,7 +29,7 @@
                                 <a href="{{url('dashboard/'.$data->contents_id)}}">
                                     <div class="wrimagecard-topimage_header"
                                         style="padding: 2%;">
-                                        <img src="{{Storage::url('public/news/'.$data->file)}}" class="img-fluid">
+                                        <img src="{{Storage::url('public/konten/'.$data->file)}}" class="img-fluid">
                                     </div>
                                     <div class="wrimagecard-topimage_title">
                                         <p style="color: #000;">{{$data->name}}</p>

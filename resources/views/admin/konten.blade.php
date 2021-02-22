@@ -96,7 +96,7 @@
                                         <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Kategori</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Konten</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
@@ -115,7 +115,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Description</label>
-                                                            <textarea name="text" class="form-control"
+                                                            <textarea name="text" id="mytextarea" class="form-control"
                                                                 rows="3">{{$data->text}}</textarea>
                                                         </div>
                                                         <div class="form-group">

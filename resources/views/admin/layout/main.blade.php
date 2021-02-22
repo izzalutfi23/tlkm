@@ -54,7 +54,7 @@
                     <span class="nav-item-head">Admin Dashboard</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('dashboard')}}">
+                    <a class="nav-link" href="{{url('adm')}}">
                         <i class="mdi mdi-compass-outline menu-icon"></i>
                         <span class="menu-title">News</span>
                     </a>
@@ -67,6 +67,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('konten')}}"><i class="mdi mdi-file menu-icon"></i>
                         <span class="menu-title">Konten</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('file')}}"><i class="mdi mdi-file menu-icon"></i>
+                        <span class="menu-title">File</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -117,7 +122,7 @@
                             <button class="btn btn-sm btn-danger">Online</button>
                         </li>
                         <li class="nav-item nav-logout d-none d-lg-block">
-                            <a class="nav-link" href="#" title="Logout">
+                            <a class="nav-link" href="{{url('logout')}}" title="Logout">
                                 <i class="mdi mdi-logout-variant"></i>
                             </a>
                         </li>
@@ -157,6 +162,8 @@
 
     <script>
         CKEDITOR.replace('text');
+        var textarea = document.getElementById('mytextarea');
+        CKEDITOR.replace(textarea);
     </script>
 </body>
 
