@@ -31,6 +31,9 @@
     <!-- plugins:js -->
     <script src="{{asset('admin/vendors/js/vendor.bundle.base.js')}}"></script>
     <script src="{{asset('admin/vendors/chart.js/Chart.min.js')}}"></script>
+
+    <!-- Filemanager -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
     <!-- endinject -->
 </head>
 
@@ -158,13 +161,13 @@
     <script src="{{asset('admin/js/todolist.js')}}"></script>
     <!-- endinject -->
 
-    <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+    <!-- <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 
     <script>
         CKEDITOR.replace('text');
         var textarea = document.getElementById('mytextarea');
         CKEDITOR.replace(textarea);
-    </script>
+    </script> -->
 </body>
 
 </html>

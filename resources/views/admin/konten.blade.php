@@ -31,7 +31,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <textarea name="text" class="form-control" rows="3"></textarea>
+                                        <textarea name="text" id="desk" class="form-control" rows="3"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Kategori</label>
@@ -115,7 +115,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Description</label>
-                                                            <textarea name="text" id="mytextarea" class="form-control"
+                                                            <textarea name="text" class="form-control"
                                                                 rows="3">{{$data->text}}</textarea>
                                                         </div>
                                                         <div class="form-group">
@@ -178,5 +178,38 @@
 
 </script>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.iframe-btn').fancybox({ 
+            'width'     : 900,
+            'height'    : 600,
+            'type'      : 'iframe',
+            'autoScale' : false
+        });
+    });
+</script>
+<script src="{{asset('assets/filemanager/tinymce/tinymce.min.js')}}"></script>
+<script type="text/javascript">
+    var BASE_URL = "{{asset('assets')}}";
+    console.log(BASE_URL);
+    tinymce.init({
+        selector: "#desk", height: 300,
+        // relative_urls : true,
+        document_base_url : 'http://www.sts.com/path1/',
+        plugins: [
+            "advlist autolink link image lists charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
+            "table contextmenu directionality emoticons paste textcolor responsivefilemanager code"
+    ],
+    toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
+    toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
+    image_advtab: true ,
+    
+    external_filemanager_path: BASE_URL + "/filemanager/filemanager/",
+    filemanager_title: "Media Galeri",
+    external_plugins: { "filemanager" : BASE_URL + "/filemanager/filemanager/plugin.min.js"}
+    });
+</script>
 
 @endsection
