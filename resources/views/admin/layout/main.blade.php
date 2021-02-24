@@ -72,11 +72,11 @@
                         <span class="menu-title">Konten</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="{{url('file')}}"><i class="mdi mdi-file menu-icon"></i>
                         <span class="menu-title">File</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('user')}}"><i class="mdi mdi-account menu-icon"></i>
                         <span class="menu-title">User</span>

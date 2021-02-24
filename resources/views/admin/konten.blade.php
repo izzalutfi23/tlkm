@@ -30,8 +30,8 @@
                                         <input type="text" name="name" required class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label>Description</label>
-                                        <textarea name="text" id="desk" class="form-control" rows="3"></textarea>
+                                        <label>URL</label>
+                                        <input type="text" name="text" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label>Kategori</label>
@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>File</label>
-                                        <input type="file" name="file" required class="form-control">
+                                        <input type="file" name="file" class="form-control">
                                     </div>
                             </div>
                             <div class="modal-footer">
@@ -69,7 +69,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Judul</th>
-                                        <th>Deskripsi</th>
+                                        <th>Url</th>
                                         <th>File</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -80,7 +80,7 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$data->name}}</td>
                                         <td>{!!substr($data->text, 0, 60)!!}...</td>
-                                        <td><img src="{{Storage::url('public/konten/'.$data->file)}}" class="img-fluid">
+                                        <td><i class="fa fa-file-text"></i>
                                         </td>
                                         <td width="11%">
                                             <button class="btn btn-primary btn-sm" data-toggle="modal"
@@ -109,20 +109,23 @@
                                                         @method('patch')
                                                         <div class="form-group">
                                                             <label>Name</label>
-                                                            <input type="hidden" name="id" value="{{$data->contents_id}}">
+                                                            <input type="hidden" name="id"
+                                                                value="{{$data->contents_id}}">
                                                             <input type="text" name="name" value="{{$data->name}}"
                                                                 required class="form-control">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label>Description</label>
-                                                            <textarea name="text" class="form-control"
-                                                                rows="3">{{$data->text}}</textarea>
+                                                            <label>URL</label>
+                                                            <input type="text" name="text" value="{{$data->text}}"
+                                                                class="form-control">
                                                         </div>
                                                         <div class="form-group">
                                                             <label>Kategori</label>
                                                             <select name="category_id" class="form-control">
                                                                 @foreach($kat as $kat1)
-                                                                <option {{($kat1->category_id==$data->category_id?'selected':'')}} value="{{$kat1->category_id}}">{{$kat1->name}}
+                                                                <option
+                                                                    {{($kat1->category_id==$data->category_id?'selected':'')}}
+                                                                    value="{{$kat1->category_id}}">{{$kat1->name}}
                                                                 </option>
                                                                 @endforeach
                                                             </select>
@@ -176,40 +179,6 @@
         $('#example').DataTable();
     });
 
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('.iframe-btn').fancybox({ 
-            'width'     : 900,
-            'height'    : 600,
-            'type'      : 'iframe',
-            'autoScale' : false
-        });
-    });
-</script>
-<script src="{{asset('assets/filemanager/tinymce/tinymce.min.js')}}"></script>
-<script type="text/javascript">
-    var BASE_URL = "{{asset('assets')}}";
-    console.log(BASE_URL);
-    tinymce.init({
-        selector: "#desk", height: 300,
-        // relative_urls : true,
-        document_base_url : 'http://www.sts.com/path1/',
-        plugins: [
-            "advlist autolink link image lists charmap print preview hr anchor pagebreak",
-            "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
-            "table contextmenu directionality emoticons paste textcolor responsivefilemanager code"
-    ],
-    toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
-    toolbar2: "| responsivefilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
-    image_advtab: true ,
-    
-    external_filemanager_path: BASE_URL + "/filemanager/filemanager/",
-    filemanager_title: "Media Galeri",
-    external_plugins: { "filemanager" : BASE_URL + "/filemanager/filemanager/plugin.min.js"}
-    });
 </script>
 
 @endsection

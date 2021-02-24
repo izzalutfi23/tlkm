@@ -18,15 +18,24 @@ class Kontencontroller extends Controller
     }
 
     public function store(Request $request){
-        $image = $request->file('file');
-        $image->storeAs('public/konten', $image->hashName());
 
-        Konten::create([
-            'name' => $request->name,
-            'text' => $request->text,
-            'category_id' => $request->category_id,
-            'file' => $image->hashName()
-        ]);
+        if($request->hasFile('file')){
+            $image = $request->file('file');
+            $image->storeAs('public/konten', $image->hashName());
+            Konten::create([
+                'name' => $request->name,
+                'text' => $request->text,
+                'category_id' => $request->category_id,
+                'file' => $image->hashName()
+            ]);
+        }else{
+            Konten::create([
+                'name' => $request->name,
+                'text' => $request->text,
+                'category_id' => $request->category_id,
+                'file' => ''
+            ]);
+        }
 
         return redirect('konten');
     }

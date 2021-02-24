@@ -16,7 +16,8 @@ class Searchcontroller extends Controller
                 'id' => $kon->contents_id,
                 'keterangan' => 'Dashboard',
                 'judul' => $kon->name,
-                'text' => $kon->text
+                'text' => $kon->text,
+                'url' => $kon->text
             ];
             array_push($result, $data);
         }
@@ -25,7 +26,8 @@ class Searchcontroller extends Controller
                 'id' => $new->news_id,
                 'keterangan' => 'News',
                 'judul' => $new->name,
-                'text' => $new->text
+                'text' => $new->text,
+                'url' => ''
             ];
             array_push($result, $data);
         }
