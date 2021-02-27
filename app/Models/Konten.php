@@ -10,5 +10,5 @@ class Konten extends Model
     use HasFactory;
     protected $table = 'contents';
 
-    protected $fillable = ['name', 'text', 'file', 'category_id'];
+    protected $fillable = ['name', 'text', 'file', 'category_id', 'subcategory_id'];
 }

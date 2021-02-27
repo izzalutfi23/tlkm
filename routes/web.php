@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboardcontroller;
 use App\Http\Controllers\Searchcontroller;
 use App\Http\Controllers\Admincontroller;
 use App\Http\Controllers\Kategoricontroller;
+use App\Http\Controllers\Subkategoricontroller;
 use App\Http\Controllers\Kontencontroller;
 use App\Http\Controllers\Usercontroller;
 use App\Http\Controllers\Authcontroller;
@@ -52,8 +53,17 @@ Route::group(['middleware'=>'auth'], function(){
         Route::get('/{id}', [Kategoricontroller::class, 'destroy']);
     });
 
+    Route::prefix('subkategori')->group(function () {
+        Route::get('/', [Subkategoricontroller::class, 'index']);
+        Route::post('/', [Subkategoricontroller::class, 'store']);
+        Route::patch('/', [Subkategoricontroller::class, 'update']);
+        Route::get('/{id}', [Subkategoricontroller::class, 'destroy']);
+    });
+
     Route::prefix('konten')->group(function () {
         Route::get('/', [Kontencontroller::class, 'index']);
+        Route::get('/kat', [Kontencontroller::class, 'kat']);
+        Route::get('/sub/{id}', [Kontencontroller::class, 'subkat']);
         Route::post('/', [Kontencontroller::class, 'store']);
         Route::patch('/', [Kontencontroller::class, 'update']);
         Route::get('/{id}', [Kontencontroller::class, 'destroy']);

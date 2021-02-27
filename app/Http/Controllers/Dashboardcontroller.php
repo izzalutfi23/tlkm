@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{Kategori, Konten};
+use App\Models\{Kategori, Konten, Subkategori};
 
 class Dashboardcontroller extends Controller
 {
     public function index(){
         $kategori = Kategori::all();
+        $subkategori = Subkategori::all();
         $konten = Konten::orderBy('name', 'ASC')->get();
         $data = [
             'kategori' => $kategori,
+            'subkategori' => $subkategori,
             'konten' => $konten
         ];
         return view('user.dashboard', $data);

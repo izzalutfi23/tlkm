@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{Konten, Kategori};
+use App\Models\{Konten, Kategori, Subkategori};
 
 class Kontencontroller extends Controller
 {
@@ -17,6 +17,22 @@ class Kontencontroller extends Controller
         return view('admin.konten', $data);
     }
 
+    public function kat(){
+        $kat = Kategori::all();
+            echo "<option value='0'>--Pilih--</option>";
+        foreach($kat as $data){
+            echo "<option value='".$data->category_id."' id_kategori='".$data->category_id."'>".$data->name."</option>";
+        }
+    }
+
+    public function subkat($id){
+        $subkat = Subkategori::where('categories_id', $id)->get();
+        
+        foreach($subkat as $data){
+            echo "<option value='".$data->id."'>".$data->name."</option>";
+        }
+    }
+
     public function store(Request $request){
 
         if($request->hasFile('file')){
@@ -26,6 +42,7 @@ class Kontencontroller extends Controller
                 'name' => $request->name,
                 'text' => $request->text,
                 'category_id' => $request->category_id,
+                'subcategory_id' => $request->subcategory_id,
                 'file' => $image->hashName()
             ]);
         }else{
@@ -33,6 +50,7 @@ class Kontencontroller extends Controller
                 'name' => $request->name,
                 'text' => $request->text,
                 'category_id' => $request->category_id,
+                'subcategory_id' => $request->subcategory_id,
                 'file' => ''
             ]);
         }
@@ -44,20 +62,39 @@ class Kontencontroller extends Controller
         if($request->hasFile('file')){
             $image = $request->file('file');
             $image->storeAs('public/konten', $image->hashName());
-            Konten::where('contents_id', $request->id)->update([
-                'name' => $request->name,
-                'text' => $request->text,
-                'category_id' => $request->category_id,
-                'file' => $image->hashName()
-            ]);
+            if($request->subcategory_id!=0){
+                Konten::where('contents_id', $request->id)->update([
+                    'name' => $request->name,
+                    'text' => $request->text,
+                    'category_id' => $request->category_id,
+                    'subcategory_id' => $request->subcategory_id,
+                    'file' => $image->hashName()
+                ]);
+            }
+            else{
+                Konten::where('contents_id', $request->id)->update([
+                    'name' => $request->name,
+                    'text' => $request->text,
+                    'file' => $image->hashName()
+                ]);
+            }
             return redirect('konten');
         }
         else{
-            Konten::where('contents_id', $request->id)->update([
-                'name' => $request->name,
-                'text' => $request->text,
-                'category_id' => $request->category_id
-            ]);
+            if($request->subcategory_id!=0){
+                Konten::where('contents_id', $request->id)->update([
+                    'name' => $request->name,
+                    'text' => $request->text,
+                    'category_id' => $request->category_id,
+                    'subcategory_id' => $request->subcategory_id
+                ]);
+            }
+            else{
+                Konten::where('contents_id', $request->id)->update([
+                    'name' => $request->name,
+                    'text' => $request->text
+                ]);
+            }
             return redirect('konten');
         }
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2021 at 04:32 PM
+-- Generation Time: Feb 27, 2021 at 07:25 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -55,6 +55,7 @@ CREATE TABLE `contents` (
   `text` text COLLATE utf8mb4_unicode_ci,
   `file` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `category_id` int(11) NOT NULL,
+  `subcategory_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -63,10 +64,12 @@ CREATE TABLE `contents` (
 -- Dumping data for table `contents`
 --
 
-INSERT INTO `contents` (`contents_id`, `name`, `text`, `file`, `category_id`, `created_at`, `updated_at`) VALUES
-(1, 'Judul berita', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'vTH2fboNQdHcApLFaUdGtbuRREsKrtroJMbPYsLp.jpg', 1, '2021-01-31 17:00:00', '2021-02-22 07:00:31'),
-(2, 'Judul berita kedua', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 'iJbqbxl18XSA0PTIfhBYzFOD4sHRCgqR8uMUbDcQ.jpg', 2, '2021-01-31 17:00:00', '2021-02-21 17:46:03'),
-(5, 'oke', '<p>kbvkvbhvjv</p>', '3sztGt9uIFqTwiSjPbay6WLs1VSxyAfY9AspZXD4.jpg', 1, '2021-02-21 17:39:31', '2021-02-21 17:39:31');
+INSERT INTO `contents` (`contents_id`, `name`, `text`, `file`, `category_id`, `subcategory_id`, `created_at`, `updated_at`) VALUES
+(12, 'Konten 1', 'http://localhost/phpmyadmin/sql.php?db=db_telkom&table=contents&pos=0', 'at8FRwh4jvHaZjY0AC41xuSJcCQLbC4oB18aaLMK', 1, 1, '2021-02-27 10:25:25', '2021-02-27 10:25:25'),
+(13, 'Konten 2', 'http://localhost/phpmyadmin/sql.php?db=db_telkom&table=contents&pos=0', 'gX84ShFR8TjO2nxwUFEQ9lV4dSpE8g4d0y9ElNxb', 1, 2, '2021-02-27 10:25:44', '2021-02-27 10:25:44'),
+(14, 'Konten 3', 'http://localhost/phpmyadmin/sql.php?db=db_telkom&table=contents&pos=0', 'aA1eadEy2ZUEPtbltwominJxaABY90w4pifXXMUV', 2, 4, '2021-02-27 10:26:06', '2021-02-27 10:26:06'),
+(15, 'Konten 4', 'http://localhost/phpmyadmin/sql.php?db=db_telkom&table=contents&pos=0', 'HcIUpQsrJRSRvmJkWfmwQ99G1cduBVuwrfyD41mb', 2, 5, '2021-02-27 10:26:22', '2021-02-27 10:26:51'),
+(16, 'baru', 'https://getbootstrap.com/docs/4.1/components/navbar/', 'jajEg1Z1YtuTtN06AODQbqvD5hdqis4o5Tz2mwf0', 1, 1, '2021-02-27 11:24:09', '2021-02-27 11:24:09');
 
 -- --------------------------------------------------------
 
@@ -150,7 +153,8 @@ CREATE TABLE `news` (
 INSERT INTO `news` (`news_id`, `name`, `file`, `text`, `created_at`, `updated_at`) VALUES
 (1, 'judul berita', '2ebd0c7cc31aed5178f299ea553f2492.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2021-02-19 19:00:00', '2021-02-20 08:08:45'),
 (2, 'bismillah', '4967f420452c8af9701ee29b21937e05.jpg', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', '2021-02-20 04:29:25', '2021-02-20 08:08:24'),
-(3, 'tes', 'aekDS6iseQshjCTjI93Ka2YTtbMDakXrPQlVyaDj.jpg', 'oke', '2021-02-21 16:33:01', '2021-02-21 16:45:06');
+(3, 'tes', 'aekDS6iseQshjCTjI93Ka2YTtbMDakXrPQlVyaDj.jpg', 'oke', '2021-02-21 16:33:01', '2021-02-21 16:45:06'),
+(4, 'oke', 'WVo5BY87dxJfRFO8TDJdlMwaYim8QR9yyYY9Tm35.jpg', '<p>tes</p>', '2021-02-24 07:23:13', '2021-02-24 07:23:13');
 
 -- --------------------------------------------------------
 
@@ -179,6 +183,30 @@ CREATE TABLE `settings` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subcategories`
+--
+
+CREATE TABLE `subcategories` (
+  `id` int(10) NOT NULL,
+  `categories_id` int(10) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `subcategories`
+--
+
+INSERT INTO `subcategories` (`id`, `categories_id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Kuah', '2021-02-27 16:31:52', '2021-02-27 09:31:52'),
+(2, 1, 'Pedas', '2021-02-27 16:31:41', '2021-02-27 09:31:41'),
+(4, 2, 'Pantai', '2021-02-27 09:31:22', '2021-02-27 09:31:22'),
+(5, 2, 'Gunung', '2021-02-27 09:31:32', '2021-02-27 09:31:32');
 
 -- --------------------------------------------------------
 
@@ -233,6 +261,12 @@ ALTER TABLE `news`
   ADD PRIMARY KEY (`news_id`);
 
 --
+-- Indexes for table `subcategories`
+--
+ALTER TABLE `subcategories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -252,7 +286,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `contents`
 --
 ALTER TABLE `contents`
-  MODIFY `contents_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `contents_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `file`
@@ -267,10 +301,16 @@ ALTER TABLE `news`
   MODIFY `news_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `subcategories`
+--
+ALTER TABLE `subcategories`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

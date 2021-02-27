@@ -68,6 +68,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{url('subkategori')}}"><i class="mdi mdi-apps menu-icon"></i>
+                        <span class="menu-title">Sub Kategori</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{url('konten')}}"><i class="mdi mdi-file menu-icon"></i>
                         <span class="menu-title">Konten</span>
                     </a>

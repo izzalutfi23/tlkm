@@ -36,9 +36,13 @@
                                     <div class="form-group">
                                         <label>Kategori</label>
                                         <select name="category_id" class="form-control">
-                                            @foreach($kat as $kat1)
-                                            <option value="{{$kat1->category_id}}">{{$kat1->name}}</option>
-                                            @endforeach
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Sub Kategori</label>
+                                        <select name="subcategory_id" class="form-control">
+                                            <option value="0">--Pilih--</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -122,18 +126,19 @@
                                                         <div class="form-group">
                                                             <label>Kategori</label>
                                                             <select name="category_id" class="form-control">
-                                                                @foreach($kat as $kat1)
-                                                                <option
-                                                                    {{($kat1->category_id==$data->category_id?'selected':'')}}
-                                                                    value="{{$kat1->category_id}}">{{$kat1->name}}
-                                                                </option>
-                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Sub Kategori</label>
+                                                            <select name="subcategory_id" class="form-control">
+                                                                <option value="0">--Pilih--</option>
                                                             </select>
                                                         </div>
                                                         <div class="form-group">
                                                             <label>File</label>
                                                             <input type="file" name="file" class="form-control">
                                                         </div>
+
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="submit" class="btn btn-primary"
@@ -143,29 +148,30 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- End edit data -->
-                                    @endforeach
-                                </tbody>
-                            </table>
                         </div>
+                        <!-- End edit data -->
+                        @endforeach
+                        </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- content-wrapper ends -->
+</div>
+<!-- content-wrapper ends -->
 
-    <!-- partial:partials/_footer.html -->
-    <footer class="footer">
-        <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
-                IJAB QOBUL 2021</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
-                    href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a>
-                from Bootstrapdash.com</span>
-        </div>
-    </footer>
-    <!-- partial -->
+<!-- partial:partials/_footer.html -->
+<footer class="footer">
+    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
+            IJAB QOBUL 2021</span>
+        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
+                href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard templates</a>
+            from Bootstrapdash.com</span>
+    </div>
+</footer>
+<!-- partial -->
 </div>
 <!-- main-panel ends -->
 
@@ -174,9 +180,42 @@
 <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
 
+<!-- <script type="text/javascript" src="{{asset('dist/js/jquery.min.js')}}"></script> -->
+
 <script>
     $(document).ready(function () {
         $('#example').DataTable();
+    });
+
+</script>
+<script>
+    $(document).ready(function () {
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $.ajax({
+            type: "GET",
+            url: "{{url('/konten/kat')}}",
+            success: function (kategori) {
+                $("select[name=category_id]").html(kategori);
+            }
+        });
+
+        $("select[name=category_id]").on("change", function () {
+            var id_kategori = $("option:selected", this).attr("id_kategori");
+            $.ajax({
+                type: "GET",
+                url: "{{url('/konten/sub')}}" + '/' + id_kategori,
+                success: function (hasil_sub) {
+                    $("select[name=subcategory_id]").html(hasil_sub);
+                }
+            });
+        });
+
     });
 
 </script>
