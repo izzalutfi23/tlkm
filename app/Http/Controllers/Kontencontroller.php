@@ -27,7 +27,8 @@ class Kontencontroller extends Controller
 
     public function subkat($id){
         $subkat = Subkategori::where('categories_id', $id)->get();
-        
+
+            echo "<option value='0'>Tidak Ada</option>";
         foreach($subkat as $data){
             echo "<option value='".$data->id."'>".$data->name."</option>";
         }

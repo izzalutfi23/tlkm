@@ -14,7 +14,7 @@
                             <p style="color: #000; font-weight: bold;">#{{$res['keterangan']}}</p>
                             <a href="{{url('/'.strtolower($res['keterangan']).'/'.$res['id'])}}">
                                 <p style="color: #999; font-weight: bold;">{{$res['judul']}}</p>
-                                <p>{{substr($res['text'], 0, 100)}}...</p>
+                                <p>{!!substr($res['text'], 0, 100)!!}...</p>
                             </a>
                         </div>
                         <div class="col-lg-1">

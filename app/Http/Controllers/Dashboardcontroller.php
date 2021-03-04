@@ -26,4 +26,14 @@ class Dashboardcontroller extends Controller
         ];
         return view('user.dashboarddetail', $data);
     }
+
+    public function getbykat($id){
+        $konten = Konten::where('category_id', $id)->get();
+        $kat = Kategori::where('category_id', $id)->first();
+        $data = [
+            'konten' => $konten,
+            'kategori' => $kat->name
+        ];
+        return view('user.dashbkat', $data);
+    }
 }

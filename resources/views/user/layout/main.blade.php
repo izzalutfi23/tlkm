@@ -24,13 +24,24 @@
         <nav class="my-2 my-md-0 mr-md-3">
             <a class="text-dark" href="{{url('/')}}"><button class="btn btn-danger">Home</button></a>
             <a class="text-dark" href="{{url('/news')}}"><button class="btn btn-danger">News</button></a>
-            <a class="text-dark" href="{{url('/dashboard')}}"><button class="btn btn-danger">Dashboard</button></a>
+            <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Dashboard
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{{url('/dashboard')}}">semua</a>
+                <div class="dropdown-divider"></div>
+                @foreach($key as $dt)
+                <a class="dropdown-item" href="{{url('/dashkat/'.$dt->category_id)}}">{{$dt->name}}</a>
+                @endforeach
+            </div>
         </nav>
         <!-- Another variation with a button -->
         <div class="input-group" style="width: 20%;">
             <form action="{{url('/search')}}" method="POST" class="form-inline">
                 @csrf
-                <input type="text" name="search" class="form-control" style="width: 80%;" placeholder="Search news / content">
+                <input type="text" name="search" class="form-control" style="width: 80%;"
+                    placeholder="Search news / content">
                 <div class="input-group-append">
                     <button class="btn btn-secondary" type="submit">
                         <i class="fa fa-search"></i>

@@ -10,4 +10,8 @@ class Kategori extends Model
     use HasFactory;
     protected $table = 'categories';
     protected $fillable = ['name'];
+
+    public function subkat(){
+        return $this->hasMany('App\Models\Subkategori', 'categories_id', 'category_id');
+    }
 }

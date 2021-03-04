@@ -30,6 +30,7 @@ Route::get('/news', [Newscontroller::class, 'index']);
 Route::get('/news/{id}', [Newscontroller::class, 'get_byid']);
 Route::get('/dashboard', [Dashboardcontroller::class, 'index']);
 Route::get('/dashboard/{id}', [Dashboardcontroller::class, 'getbyid']);
+Route::get('/dashkat/{id}', [Dashboardcontroller::class, 'getbykat']);
 Route::post('/search', [Searchcontroller::class, 'search']);
 
 // Login
