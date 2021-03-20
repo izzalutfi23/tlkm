@@ -18,13 +18,11 @@
 
 <body>
 
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-beige border-bottom box-shadow">
-        <h5 class="my-0 mr-md-auto font-weight-normal"><img src="{{asset('assets/img/telkom.png')}}"
-                class="img-fluid logo"></h5>
-        <nav class="my-2 my-md-0 mr-md-3">
-            <a class="text-dark" href="{{url('/')}}"><button class="btn btn-danger">Home</button></a>
-            <a class="text-dark" href="{{url('/news')}}"><button class="btn btn-danger">News</button></a>
-            <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+    <div class="flex-md-row align-items-center p-3 px-md-12 mb-3 bg-beige border-bottom box-shadow">
+        <nav class="my-2 my-md-0 ml-md-5">
+            <a class="text-dark" href="{{url('/')}}"><button class="btn btn-danger float-left ml-2">Home</button></a>
+            <a class="text-dark" href="{{url('/news')}}"><button class="btn btn-danger float-left ml-2">News</button></a>
+            <button class="btn btn-danger float-left ml-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 Dashboard
             </button>
@@ -37,7 +35,7 @@
             </div>
         </nav>
         <!-- Another variation with a button -->
-        <div class="input-group" style="width: 20%;">
+        <div class="input-group float-left pl-2" style="width: 20%;">
             <form action="{{url('/search')}}" method="POST" class="form-inline">
                 @csrf
                 <input type="text" name="search" class="form-control" style="width: 80%;"
@@ -49,6 +47,8 @@
                 </div>
             </form>
         </div>
+        <img src="{{asset('assets/img/telkom.png')}}" class="img-fluid float-right mr-5" width="100px">
+        <div style="clear: Both;"></div>
     </div>
 
     @yield('container');
